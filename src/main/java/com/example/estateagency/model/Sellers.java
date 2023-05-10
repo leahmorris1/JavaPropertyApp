@@ -13,8 +13,15 @@ public class Sellers {
     private long id;
     private String firstName;
     private String lastName;
-    private String dateOfBirth;
-    private int age;
+
+    private String email;
+
+    private String address;
+
+    private int postcode;
+
+    private int phone;
+
     @ManyToOne
     private Buyers buyers;
 
@@ -26,13 +33,63 @@ public class Sellers {
         return id;
     }
 
-    public Sellers(long id, String firstName, String lastName, String dateOfBirth, int age, Buyers buyers, List<Properties> propertiesList) {
+    public Sellers(long id, String firstName, String lastName, String email, String address, int postcode, int phone, Buyers buyers, List<Properties> propertiesList) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
-        this.age = age;
+        this.email = email;
+        this.address = address;
+        this.postcode = postcode;
+        this.phone = phone;
         this.buyers = buyers;
+        this.propertiesList = propertiesList;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(int postcode) {
+        this.postcode = postcode;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
+
+    public Buyers getBuyers() {
+        return buyers;
+    }
+
+    public void setBuyers(Buyers buyers) {
+        this.buyers = buyers;
+    }
+
+    public List<Properties> getPropertiesList() {
+        return propertiesList;
+    }
+
+    public void setPropertiesList(List<Properties> propertiesList) {
         this.propertiesList = propertiesList;
     }
 
@@ -59,29 +116,7 @@ public class Sellers {
         this.lastName = lastName;
     }
 
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
 
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public Buyers getDepartment() {
-        return buyers;
-    }
-
-    public void setDepartment(Buyers buyers) {
-        this.buyers = buyers;
-    }
 
     public List<Properties> getAddressList() {
         return propertiesList;
@@ -97,8 +132,10 @@ public class Sellers {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", dateOfBirth='" + dateOfBirth + '\'' +
-                ", age=" + age +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", postcode=" + postcode +
+                ", phone=" + phone +
                 ", buyers=" + buyers +
                 ", propertiesList=" + propertiesList +
                 '}';
