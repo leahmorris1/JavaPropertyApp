@@ -2,142 +2,107 @@ package com.example.estateagency.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
-
+@CrossOrigin(origins = "*")
 @Entity
+@Table (name = "sellers")
 public class Sellers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int seller_id;
+    @Column (name = "firstName")
     private String firstName;
-    private String lastName;
-
-    private String email;
-
+    private String surname;
     private String address;
+    private String postcode;
+    private String phone;
 
-    private int postcode;
-
-    private int phone;
-
-    @ManyToOne
-    private Buyers buyers;
-
-    @OneToMany(mappedBy = "sellers", fetch = FetchType.EAGER)
-    @JsonIgnore
-    private List<Properties> propertiesList;
-
-    public long getId() {
-        return id;
-    }
-
-    public Sellers(long id, String firstName, String lastName, String email, String address, int postcode, int phone, Buyers buyers, List<Properties> propertiesList) {
-        this.id = id;
+    public Sellers(int seller_id, String firstName, String surname, String address, String postcode, String phone) {
+        this.seller_id = seller_id;
         this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+        this.surname = surname;
         this.address = address;
         this.postcode = postcode;
         this.phone = phone;
-        this.buyers = buyers;
-        this.propertiesList = propertiesList;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public int getPostcode() {
-        return postcode;
-    }
-
-    public void setPostcode(int postcode) {
-        this.postcode = postcode;
-    }
-
-    public int getPhone() {
-        return phone;
-    }
-
-    public void setPhone(int phone) {
-        this.phone = phone;
-    }
-
-    public Buyers getBuyers() {
-        return buyers;
-    }
-
-    public void setBuyers(Buyers buyers) {
-        this.buyers = buyers;
-    }
-
-    public List<Properties> getPropertiesList() {
-        return propertiesList;
-    }
-
-    public void setPropertiesList(List<Properties> propertiesList) {
-        this.propertiesList = propertiesList;
     }
 
     public Sellers() {
+
     }
 
-    public void setId(long id) {
-        this.id = id;
+    //get and set seller_id
+    public long getSeller_id() {
+        return seller_id;
+    }
+    public void setSeller_id(int seller_id) {
+        this.seller_id = seller_id;
     }
 
+    //get and set firstname
     public String getFirstName() {
         return firstName;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    //get and set email;
+    public String getSurname() {
+        return surname;
+    }
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    //get and set address
+    public String getAddress() {
+        return address;
+    }
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-
-
-    public List<Properties> getAddressList() {
-        return propertiesList;
+    //get and set postcode
+    public String getPostcode() {
+        return postcode;
+    }
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
     }
 
-    public void setAddressList(List<Properties> propertiesList) {
-        this.propertiesList = propertiesList;
+    //get and set phone
+    public String getPhone() {
+        return phone;
     }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    //get and set list
+    //public List<Properties> getPropertiesList() {
+     //   return propertiesList;
+    //}
+    //public void setPropertiesList(List<Properties> propertiesList) {
+     //   this.propertiesList = propertiesList;
+    //}
+
+
+    //@OneToMany(mappedBy = "sellers", fetch = FetchType.EAGER)
+    //@JsonIgnore
+    //private List<Properties> propertiesList;
 
     @Override
     public String toString() {
         return "Sellers{" +
-                "id=" + id +
+                "seller_id=" + seller_id +
                 ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
+                ", surname='" + surname + '\'' +
                 ", address='" + address + '\'' +
-                ", postcode=" + postcode +
-                ", phone=" + phone +
-                ", buyers=" + buyers +
-                ", propertiesList=" + propertiesList +
+                ", postcode='" + postcode + '\'' +
+                ", phone='" + phone + '\'' +
                 '}';
     }
 }

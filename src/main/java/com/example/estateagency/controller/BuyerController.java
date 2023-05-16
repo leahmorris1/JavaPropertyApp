@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/department")
+@RequestMapping("/buyer")
 public class BuyerController {
 
     @Autowired
@@ -25,17 +26,23 @@ public class BuyerController {
 
     @GetMapping("/read/{id}")
     public Buyers readOne(@PathVariable long id ) {
-        return service.getDepartment(id);
+        return service.getBuyer(id);
     }
 
     @PostMapping("/add")
     public Buyers add(@RequestBody Buyers newDep){
-        return service.createDepartment(newDep);
+        return service.createBuyer(newDep);
     }
+
 
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable long id ) {
-        service.deleteDepartment(id);
+        service.deleteBuyer(id);
     }
 
+    @PutMapping ("/update/{buyer_id}")
+    public Buyers updateBuyer (@PathVariable long buyer_id,
+                               @RequestBody Buyers updatedBuyer){
+        return this.service.updateBuyer(buyer_id, updatedBuyer);
+    }
 }
